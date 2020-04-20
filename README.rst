@@ -16,3 +16,10 @@ Start the server
 ****************
 - For Windows users, just run ``start.ps1``
 - For Linux/OSX users, just run ``./start.sh``
+
+The server should be available at port 8080
+
+*****************
+API documentation
+*****************
+The documentation is provided in swagger ui, please go to ``{your_host:your_port}/apidocs/``

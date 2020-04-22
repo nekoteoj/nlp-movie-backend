@@ -2,6 +2,7 @@ import os
 import pathlib
 
 from flask import Flask
+from flask_cors import CORS
 from flasgger import Swagger
 
 def create_app(test_config=None):
@@ -22,6 +23,7 @@ def create_app(test_config=None):
         pass
 
     swagger = Swagger(app)
+    CORS(app)
 
     from nlp_movie_backend.routes import movie
 

@@ -1,7 +1,7 @@
 from flask import current_app
 
 from nlp_movie_backend.core.recommender import MovieRecomender
-from nlp_movie_backend.util.singleton_container import singleton
+from nlp_movie_backend.util.decorator import singleton
 from nlp_movie_backend.model import movie_repository
 
 

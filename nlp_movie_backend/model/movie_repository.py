@@ -2,9 +2,10 @@ import json
 import random
 
 from flask import current_app
-from nlp_movie_backend.util.singleton_container import singleton
+from nlp_movie_backend.util.decorator import deepcopy, singleton
 
 
+@deepcopy
 @singleton
 def _get_movies_from_json():
     with open(current_app.config.get("MOVIES_PATH")) as file_input:

@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, request
 
-from nlp_movie_backend.model import movie_repository
+from nlp_movie_backend.service import movie_service
+
 
 bp = Blueprint("movie", __name__, url_prefix="/movie")
+
 
 @bp.route("/text")
 def get_movies_by_text():
@@ -23,8 +25,9 @@ def get_movies_by_text():
             description: List of movies matched with query
     """
     text = request.args.get("query")
-    movies = movie_repository.get_by_text(text)
+    movies = movie_service.get_by_text(text)
     return jsonify(movies=movies)
+
 
 @bp.route("/")
 def get_all_movies():
@@ -37,5 +40,5 @@ def get_all_movies():
         '200':
             description: List of all movies
     """
-    movies = movie_repository.get_all()
+    movies = movie_service.get_all()
     return jsonify(movies=movies)

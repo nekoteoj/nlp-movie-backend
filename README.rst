@@ -19,6 +19,18 @@ Start the server
 
 The server should be available at port 8080
 
+*********************
+Build docker image
+*********************
+Build with this command ``docker build -t repository:tagname .``
+
+************************
+Run the server on docker
+************************
+1. Pull the docker image with ``docker pull compisit/nlp-movie-backend:latest``
+2. Start the server with ``docker run --rm -p 8080:8080 compisit/nlp-movie-backend:latest``
+3. Server will be available on ``localhost:8080``
+
 *****************
 API documentation
 *****************

@@ -18,13 +18,13 @@ def _map_movie_db_to_domain(movie_db):
 def _get_movies_from_db():
     db = get_db()
     movies = db.get_all(fields=["name", "imageUrl"])
-    return [_map_movie_db_to_domain(movie) for movie in movies]
+    movies = [_map_movie_db_to_domain(movie) for movie in movies]
+    return [movie for movie in movies if "name" in movie]
 
 
-def _get_movie_by_name_from_db(name):
-    db = get_db()
-    movie = db.match("name", name, fields=["name", "imageUrl"])
-    return _map_movie_db_to_domain(movie)
+def _get_map_name_to_movie():
+    movies = _get_movies_from_db()
+    return {movie["name"]: movie for movie in movies}
 
 
 def get_all():
@@ -32,4 +32,5 @@ def get_all():
 
 
 def get_by_names(names):
-    return [_get_movie_by_name_from_db(name) for name in names]
+    map_name_to_movie = _get_map_name_to_movie()
+    return [map_name_to_movie[name.strip()] for name in names]

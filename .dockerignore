@@ -21,3 +21,6 @@ build/
 README.rst
 start.ps1
 instance
+
+.env
+.example.env

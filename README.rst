@@ -10,6 +10,7 @@ Set up
 1. Create your environment with ``python -m venv venv``
 2. Activate your environment with ``source venv/bin/activate``
 3. Install dependencies with ``pip install -r requirements.txt``
+4. Setup .env ``cp .example.env .env`` and edit the ``.env`` for api keys
 
 ****************
 Start the server

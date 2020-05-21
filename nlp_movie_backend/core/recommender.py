@@ -47,13 +47,15 @@ class MovieRecomender():
             for i in range(len(self.TF)):
                 tdidf_score = 0
                 for word in sentence:
-                    if(word in self.word_to_idx_summary):
+                    if(word in self.word_to_idx_summary and word != 0):
                         tdidf_score += self.TF[i, self.word_to_idx_summary[word]
                                                ] * self.IDF[self.word_to_idx_summary[word]]
+                tdidf_score = 0
                 logit.append(tdidf_score)
             logit = np.array(logit)
-            res = logit / np.sum(logit)
-        if(res is None):
+            x = np.sum(logit)
+            res = logit / (x if x != 0 else 1)
+        if(res is None or np.sum(res) == 0):
             res = self.model.predict(t)[0]
         movie_list = [self.idx_to_class[i] for i in range(res.shape[0])]
         a = sorted(zip(res, movie_list), key=lambda x: x[0], reverse=True)
